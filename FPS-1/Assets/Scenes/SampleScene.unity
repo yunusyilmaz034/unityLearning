@@ -1393,6 +1393,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FlashLight: {fileID: 402851003}
+--- !u!81 &1185028022
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185028016}
+  m_Enabled: 1
 --- !u!1001 &1232990425
 PrefabInstance:
   m_ObjectHideFlags: 0

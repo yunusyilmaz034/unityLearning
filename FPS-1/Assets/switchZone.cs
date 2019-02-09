@@ -44,6 +44,18 @@ public class switchZone : MonoBehaviour
            Debug.Log(increment);
            increment++;
         } while (increment < 10);
+        switch (increment)
+        {
+            case 0:
+                Debug.Log("increment en küçük çift sayı oldu");
+                break;
+            case 1:
+                Debug.Log("increment en küçük tek sayı oldu");
+                break;
+            default:
+                Debug.Log("incremet bunların dışında");
+                break;
+        }
     }
     private void OnTriggerExit(Collider other)
     {
