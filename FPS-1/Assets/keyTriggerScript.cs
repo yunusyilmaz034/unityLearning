@@ -6,18 +6,18 @@ using UnityEngine.UI;
 public class keyTriggerScript : MonoBehaviour
 {
     public Text TriggerText;
+    public GameObject StreetLight;
     // Start is called before the first frame updat
     private void OnTriggerStay(Collider other)
     {
-        TriggerText.enabled = false;
-        
+        TriggerText.text = "Işığı yakmak için 'E' basınız";
         if (Input.GetAxis("TriggerLight") > 0f)
         {
-            
+            StreetLight.SetActive(!StreetLight.activeSelf); 
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        TriggerText.enabled = false;
+        TriggerText.text = "";
     }
 }
