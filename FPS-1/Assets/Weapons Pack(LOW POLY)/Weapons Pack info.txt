@@ -1,0 +1,66 @@
+Low Poly Weapons Pack.
+
+All the guns have a simple firing animation if needed. It consists of one bullet shell which can be looped.
+
+SPLIT ANIMATIONS:
+
+AK-47: 1 - 6 (SHOOT)
+
+Barrett M107: 1 - 11 (Reload)
+
+Colt M4: 1 - 6 (SHOOT)
+
+Gatling Gun: 1 - 6 (SHOOT)
+
+9mm Handgun: 1 - 6 (SHOOT)
+
+Shotgun: 1 - 10 (Reload)
+
+Uzi: 1 - 6 (Shoot)
+
+SMAW Launcher (No ANIMATION)
+
+AK-47, M4, Barrett M107 and Handgun each have a seperate magazine,
+
+The Gatling Gun barrels are also sepearate for rotation,
+
+The Shotgun has a seprate pump action for reloading,
+
+Handgun also has a seperate slider,
+
+All of these are parented to the gun.
+
+TEXTURES:
+
+All textures are 1K.TIF files without compression. Textures included are Diffuse, Specular and Alpha specular for UNITY.
+
+POLYS:
+
+AK47: 300 POLYS
+
+BARRETT M107: 281 POLYS
+
+COLT M4: 363 POLYS
+
+GATLING GUN: 342 POLYS
+
+9MM HANDGUN: 187 POLYS
+
+SHOTGUN: 184 POLYS
+
+UZI: 163 POLYS
+
+SMAW LAUNCHER: 321 POLYS
+
+HEDP ROCKET: 90 POLYS
+
+SHELLS: 35 POLYS
+
+
+Any other requests or animations please let me know and I'll try help you out.
+
+ENJOY!
+
+duane_mayberry@yahoo.co.uk
+
+www.duanesmind.co.uk
