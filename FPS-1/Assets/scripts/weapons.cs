@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class weapons : MonoBehaviour
 {
-    public float range, demage, fireRate;
+    public float range, demage, fireRate, fireTime;
     public AudioClip sound;
     protected int m_currentBullets = 30;
     public Light muzzleLight;
     public int maxBullets;
     public float clipRate;
     private float muzzleRate;
+
     //property
     public int currentBullets
     {
@@ -42,11 +43,12 @@ public class weapons : MonoBehaviour
             muzzleLight.intensity = 0;
         }
     }
-    public bool Fire()
+    public virtual bool Fire()
     {
-        if (Time.time > fireRate && currentBullets > 0)
+        if (Time.time > fireTime + fireRate && currentBullets > 0)
         {
             currentBullets--;
+            fireTime = Time.time;
             AudioSource.PlayClipAtPoint(sound, transform.position);
             muzzleLight.intensity = 4;
             muzzleRate = 0.1f;
