@@ -25,6 +25,11 @@ public class csRifle : weapons
             if (Physics.Raycast(r, out rh))
             {
                 Debug.Log(rh.transform.gameObject.name);
+                hitableObject h = rh.transform.GetComponent<hitableObject>();
+                if (h != null)
+                {
+                    h.Hitted(demage);
+                }
             }
             return true;
         }
