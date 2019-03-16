@@ -12,11 +12,14 @@ public class enemy : MonoBehaviour
     public float damage;
     public bool isCreated;
 
+    private Animator m_zombiAnim;
+
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(createZombie());
         createZombie();
+        m_zombiAnim = zombie.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -39,6 +42,14 @@ public class enemy : MonoBehaviour
                 break;
             }
         }
-    
+    }
+    private void LateUpdate()
+    {
+        if (!m_zombiAnim.GetBool("isFalling"))
+        {
+            m_zombiAnim.SetBool("isWalk", true);
+            zombie.transform.LookAt(hero.transform);
+            zombie.transform.position = Vector3.MoveTowards(zombie.transform.position, hero.transform.position, speed * Time.deltaTime);
+        }
     }
 }
