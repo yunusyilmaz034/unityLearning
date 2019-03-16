@@ -15,6 +15,7 @@ public class enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        StartCoroutine(createZombie());
         createZombie();
     }
 
@@ -23,20 +24,21 @@ public class enemy : MonoBehaviour
     {
         
     }
-    public bool createZombie()
+    public IEnumerator createZombie()
     {
         while (!isCreated)
         {
             GameObject z = Instantiate<GameObject>(zombie, new Vector3((hero.transform.position.x + Random.insideUnitSphere.x * 10),
                 hero.transform.position.y,
                 (hero.transform.position.z + Random.insideUnitSphere.z * 10)), Quaternion.identity);
+            yield return new WaitForSeconds(1f);
             limit--;
-            if (limit < 0)
+            if (limit <= 0)
             {
                 isCreated = false;
                 break;
             }
         }
-        return false;
+    
     }
 }
