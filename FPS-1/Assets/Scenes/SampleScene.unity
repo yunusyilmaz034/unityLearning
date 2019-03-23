@@ -185,6 +185,36 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 16182493}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &23076168
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 23076169}
+  m_Layer: 0
+  m_Name: DummyFirstCreate
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &23076169
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 23076168}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 198.069, y: 601.9072, z: 212.9}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 23
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &128918595
 GameObject:
   m_ObjectHideFlags: 0
@@ -676,16 +706,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 495050338}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97756000dd5d75b4a9cbe28fd141ac94, type: 3}
+  m_Script: {fileID: 11500000, guid: 6066c7b98bbc80942809ea2db7efa34b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   zombie: {fileID: 1300611964618398, guid: 0584839bceadb844fa31b1ca352056ba, type: 3}
-  hero: {fileID: 1185028016}
-  life: 100
-  speed: 10
-  limit: 5
-  damage: 10
-  isCreated: 0
+  dummyPosition: {fileID: 23076168}
 --- !u!1 &534669902
 GameObject:
   m_ObjectHideFlags: 0
@@ -1137,7 +1162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 200
-  demage: 10
+  damage: 10
   fireRate: 1
   fireTime: 1
   sound: {fileID: 8300000, guid: 611f65b2aba4a4af7b4ab3d6ddb5b546, type: 3}
@@ -1272,6 +1297,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 13600000, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: c2815a7ab32e42c4bb42f59caacb8ec1,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 3}
 --- !u!1 &825738638
@@ -2528,8 +2558,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1523098675}
-  m_LocalRotation: {x: -0.0050126906, y: 0.74381816, z: 0.0055787875, w: 0.66833997}
-  m_LocalPosition: {x: -4.9490314, y: 600.1308, z: 231.61754}
+  m_LocalRotation: {x: 0.02273303, y: 0.6917593, z: 0.021797765, w: -0.72144103}
+  m_LocalPosition: {x: 205.50226, y: 604.75885, z: 224.41318}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

@@ -717,6 +717,7 @@ GameObject:
   - component: {fileID: 1665507281}
   - component: {fileID: 1665507279}
   - component: {fileID: 1840004103362461329}
+  - component: {fileID: 364392840421816854}
   m_Layer: 0
   m_Name: Zombie
   m_TagString: Untagged
@@ -731,8 +732,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1300611964618398}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.48393035, y: 0.30167338, z: 0.18226044, w: 0.8009905}
+  m_LocalPosition: {x: 99.39044, y: 287.30698, z: 112.10461}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4465147877298448}
@@ -767,7 +768,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -804,6 +805,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &364392840421816854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1300611964618398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97756000dd5d75b4a9cbe28fd141ac94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  life: 10
+  speed: 0.37
+  damage: 10
+  isCreated: 0
 --- !u!1 &1342411359040796
 GameObject:
   m_ObjectHideFlags: 0

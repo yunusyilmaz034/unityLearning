@@ -13,7 +13,14 @@ public class csRifle : weapons
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetAxis("Reload") > 0f)
+        {
+            if (currentBullets <= 0)
+            {
+                maxBullets = 30;
+                currentBullets = 30;
+            }
+        }
     }
     public override bool Fire()
     {
@@ -25,10 +32,15 @@ public class csRifle : weapons
             if (Physics.Raycast(r, out rh))
             {
                 Debug.Log(rh.transform.gameObject.name);
-                hitableObject h = rh.transform.GetComponent<hitableObject>();
+                hitableObject h = rh.transform.GetComponent<hitableObject>();                
                 if (h != null)
                 {
-                    h.Hitted(demage);
+                    h.Hitted(damage);
+                }
+                enemy e = rh.transform.GetComponent<enemy>();
+                if (e != null)
+                {
+                    e.Hitted(damage);
                 }
             }
             return true;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class weapons : MonoBehaviour
 {
-    public float range, demage, fireRate, fireTime;
+    public float range, damage, fireRate, fireTime;
     public AudioClip sound;
     protected int m_currentBullets = 30;
     public Light muzzleLight;
@@ -42,6 +42,7 @@ public class weapons : MonoBehaviour
         {
             muzzleLight.intensity = 0;
         }
+        Debug.Log("akış1");
     }
     public virtual bool Fire()
     {
