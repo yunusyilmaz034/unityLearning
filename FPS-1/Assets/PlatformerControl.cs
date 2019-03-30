@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class PlatformerControl : MonoBehaviour
 {
-    public Rigidbody cha_rb;
-    public Animation cha_anim;
-    public Camera cam;
+    private Rigidbody cha_rb;
+    private Animation cha_anim;
+    private Camera cam;
+    public GameObject dummyCamZoomPosition;
     public bool jumpable = true;
     public int speed = 10;
-    public int jumpHeight = 7;
-    private float jumpCamPosition = 0f;
+    public int jumpHeight = 9;
+    private float jumpCamPosition = 11f;
     // Start is called before the first frame update
     void Start()
     {
@@ -48,15 +49,24 @@ public class PlatformerControl : MonoBehaviour
         {
             jumpable = false;
             cha_rb.AddForce(new Vector3(0, jumpHeight, 0), ForceMode.Impulse);
+          
         }
     }
     private void OnCollisionEnter(Collision collision)
     {
         jumpable = true;
-        jumpCamPosition = 10f;
+        if (!collision.gameObject.tag.Equals("mainPlatform"))
+        {
+            cam.transform.position = new Vector3(transform.position.x + 3.5f, 781.519f + 2.5f, dummyCamZoomPosition.transform.position.z);
+        } else
+        {
+            cam.transform.position = new Vector3(transform.position.x + 3.5f, 781.519f + 2.5f, transform.position.z - jumpCamPosition);
+        }
     }
+    /*
     private void LateUpdate()
     {
         cam.transform.position = new Vector3(transform.position.x + 3.5f, 781.519f + 2.5f, transform.position.z - jumpCamPosition);
     }
+    */
 }
