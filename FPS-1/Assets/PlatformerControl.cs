@@ -55,6 +55,7 @@ public class PlatformerControl : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         jumpable = true;
+        /* camera zoom mode için eklendi
         if (!collision.gameObject.tag.Equals("mainPlatform"))
         {
             cam.transform.position = new Vector3(transform.position.x + 3.5f, 781.519f + 2.5f, dummyCamZoomPosition.transform.position.z);
@@ -62,11 +63,12 @@ public class PlatformerControl : MonoBehaviour
         {
             cam.transform.position = new Vector3(transform.position.x + 3.5f, 781.519f + 2.5f, transform.position.z - jumpCamPosition);
         }
+        */
     }
-    /*
+    
     private void LateUpdate()
     {
         cam.transform.position = new Vector3(transform.position.x + 3.5f, 781.519f + 2.5f, transform.position.z - jumpCamPosition);
     }
-    */
+   
 }
