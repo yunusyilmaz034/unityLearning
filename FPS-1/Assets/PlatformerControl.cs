@@ -8,7 +8,7 @@ public class PlatformerControl : MonoBehaviour
     private Animation cha_anim;
     private Camera cam;
     public GameObject dummyCamZoomPosition;
-    public bool jumpable = true;
+    public static bool jumpable = true;
     public int speed = 10;
     public int jumpHeight = 9;
     private float jumpCamPosition = 11f;
@@ -54,7 +54,9 @@ public class PlatformerControl : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        jumpable = true;
+        Debug.Log("çapışılan nesne: " + collision.gameObject.name.ToString());
+       jumpable = true;
+      
         /* camera zoom mode için eklendi
         if (!collision.gameObject.tag.Equals("mainPlatform"))
         {
@@ -65,7 +67,7 @@ public class PlatformerControl : MonoBehaviour
         }
         */
     }
-    
+   
     private void LateUpdate()
     {
         cam.transform.position = new Vector3(transform.position.x + 3.5f, 781.519f + 2.5f, transform.position.z - jumpCamPosition);
