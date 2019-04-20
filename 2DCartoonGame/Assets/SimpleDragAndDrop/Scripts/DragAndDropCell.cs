@@ -128,9 +128,7 @@ public class DragAndDropCell : MonoBehaviour, IDropHandler
                 {
                     Debug.Log("Hata : " + e.Message);
                 }
-               
-
-
+          
                 DragAndDropCell sourceCell = DragAndDropItem.sourceCell;
                 
                 DropDescriptor desc = new DropDescriptor();
