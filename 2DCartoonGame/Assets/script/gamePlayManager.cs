@@ -8,18 +8,18 @@ public class gamePlayManager : MonoBehaviour
     public Image Wheel;
     public GameObject item;
     public GameObject[] duzenek;
-    private GameObject[] kuyruk;
+    public GameObject[] kuyruk;
     public Sprite[] spr;
-    //private int[] generateNum = new int[8];
-    private int[] generateNum;
+    private int[] generateNum = new int[8];
+    //private int[] generateNum;
     private System.Random r = new System.Random();
 
     // Start is called before the first frame update
     void Start()
     {
-        //GenerateNumbers();
-        GenerateNumbers2();
-        //controlForWheel();
+        GenerateNumbers();
+        //GenerateNumbers2();
+        controlForWheel();
         for (int i = 0; i < duzenek.Length; i++)
         {
             duzenek[i].GetComponent<Image>().sprite = spr[generateNum[i]];
