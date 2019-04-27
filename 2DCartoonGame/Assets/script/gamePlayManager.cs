@@ -103,5 +103,28 @@ public class gamePlayManager : MonoBehaviour
             }
         }
     }
-
+    public IEnumerator reloadKuyruk()
+    {
+        int count = 0;
+        string sName = "";
+        for (int i = 0; i < duzenek.Length; i++)
+        {
+            if (duzenek[i].transform.childCount == 0)
+            {
+                sName = duzenek[i].GetComponent<Image>().sprite.name;
+                for (int k = 0; k < kuyruk.Length; k++)
+                {
+                    if (duzenek[i].GetComponent<Image>().sprite.name == kuyruk[k].GetComponentInChildren<DragAndDropItem>().GetComponent<Image>().sprite.name)
+                    {
+                        count++;
+                    }
+                }
+            }
+        }
+        if (count < 1)
+        {
+            kuyruk[r.Next(0, 4)].GetComponentInChildren<DragAndDropItem>().GetComponent<Image>().sprite.name = sName;
+        }
+        yield return new WaitForEndOfFrame();
+    }
 }

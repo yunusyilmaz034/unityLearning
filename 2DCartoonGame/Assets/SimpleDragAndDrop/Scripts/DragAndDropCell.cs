@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections;
+using System;
 
 /// <summary>
 /// Every item's cell must contain this script
@@ -110,20 +111,13 @@ public class DragAndDropCell : MonoBehaviour, IDropHandler
                 DragAndDropItem item = DragAndDropItem.draggedItem;
                 try
                 {
-                    int selectedNum = System.Convert.ToInt32(item.GetComponent<Image>().sprite.name.ToString());
-                    if (gameObject.GetComponent<Image>().sprite.name.ToString() == "lamb" || gameObject.transform.childCount >= 1)
+                    UInt16 selectedItem = Convert.ToUInt16(item.GetComponent<Image>().sprite.name.ToString());
+                    UInt16 sourceItem = Convert.ToUInt16(gameObject.GetComponent<Image>().sprite.name.ToString());
+                    Debug.Log("childCount: " + gameObject.transform.childCount.ToString());
+                    if (selectedItem != sourceItem || gameObject.transform.childCount >= 1)
                     {
                         return;
                     }
-                    int targetNum = System.Convert.ToInt32(gameObject.GetComponent<Image>().sprite.name.ToString());
-                    Debug.Log("taşınanın uzerindeki image: " + selectedNum.ToString());
-                    Debug.Log("kaynak uzerindeki image: " + targetNum.ToString());
-                    Debug.Log("kaç tane item var: " + gameObject.transform.childCount.ToString());
-                    if (selectedNum != targetNum)
-                    {
-                        return;
-                    }
-                    
                 } catch (System.Exception e)
                 {
                     Debug.Log("Hata : " + e.Message);
@@ -189,8 +183,10 @@ public class DragAndDropCell : MonoBehaviour, IDropHandler
                             desc.sourceCell = sourceCell;
 
                             Debug.Log("sourceCell: " + sourceCell.GetComponent<Image>().sprite.name.ToString());
+
                             //refreshKuyruk(sourceCell, item.gameObject);
-                            //StartCoroutine(GameObject.Find("GameManager").GetComponent<gamePlayManager>().reloadKuyruk());
+                           
+                            StartCoroutine(GameObject.Find("cark").GetComponent<gamePlayManager>().reloadKuyruk());
                             //StartCoroutine(GameObject.Find("GameManager").GetComponent<gamePlayManager>().endOfWheel());
                             desc.destinationCell = this;
                             // Send message with DragAndDrop info to parents GameObjects
