@@ -20,17 +20,21 @@ public class gamePlayManager : MonoBehaviour
         GenerateNumbers();
         //GenerateNumbers2();
         controlForWheel();
-        for (int i = 0; i < duzenek.Length; i++)
-        {
-            duzenek[i].GetComponent<Image>().sprite = spr[generateNum[i]];
-        }
-        
+        createDuzenek();
+        createKuyruk();
     }
 
     // Update is called once per frame
     void Update()
     {
         Wheel.transform.Rotate(new Vector3(0, 0, 1), Time.deltaTime * 10, Space.World);
+    }
+    private void createDuzenek()
+    {
+        for (int i = 0; i < duzenek.Length; i++)
+        {
+            duzenek[i].GetComponent<Image>().sprite = spr[generateNum[i]];
+        }
     }
     void GenerateNumbers() //random
     {
@@ -89,6 +93,15 @@ public class gamePlayManager : MonoBehaviour
         }
         return createNumber;
     }
- 
+    private void createKuyruk()
+    {
+        for (int i = 0; i < kuyruk.Length; i++)
+        {
+            foreach (DragAndDropItem item in kuyruk[i].GetComponentsInChildren<DragAndDropItem>())
+            {
+                item.GetComponent<Image>().sprite = spr[generateNum[r.Next(0, 8)]];
+            }
+        }
+    }
 
 }
