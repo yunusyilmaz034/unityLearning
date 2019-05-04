@@ -10,6 +10,7 @@ using System;
 [RequireComponent(typeof(Image))]
 public class DragAndDropCell : MonoBehaviour, IDropHandler
 {
+    private static int dropCount = 0;
     public enum CellType
     {
         Swap,                                                               // Items will be swapped between cells
@@ -189,8 +190,14 @@ public class DragAndDropCell : MonoBehaviour, IDropHandler
                             StartCoroutine(GameObject.Find("cark").GetComponent<gamePlayManager>().reloadKuyruk());
                             //StartCoroutine(GameObject.Find("GameManager").GetComponent<gamePlayManager>().endOfWheel());
                             desc.destinationCell = this;
+                            dropCount++;
+                            if (dropCount == 8)
+                            {
+                                StartCoroutine(GameObject.Find("cark").GetComponent<gamePlayManager>().successMethod());
+                            }
+                            Debug.Log("Drop Count: " + dropCount.ToString());
                             // Send message with DragAndDrop info to parents GameObjects
-                            StartCoroutine(NotifyOnDragEnd(desc));
+                           /// StartCoroutine(NotifyOnDragEnd(desc));
                             break;
                         default:
                             // Nothing to do

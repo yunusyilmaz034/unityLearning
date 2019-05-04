@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class gamePlayManager : MonoBehaviour
 {
@@ -10,7 +11,9 @@ public class gamePlayManager : MonoBehaviour
     public GameObject[] duzenek;
     public GameObject[] kuyruk;
     public Sprite[] spr;
+    public AudioClip bee;
     private int[] generateNum = new int[8];
+
     //private int[] generateNum;
     private System.Random r = new System.Random();
 
@@ -106,12 +109,12 @@ public class gamePlayManager : MonoBehaviour
     public IEnumerator reloadKuyruk()
     {
         int count = 0;
-        string sName = "";
+        Sprite s = duzenek[0].GetComponent<Image>().sprite;
         for (int i = 0; i < duzenek.Length; i++)
         {
             if (duzenek[i].transform.childCount == 0)
             {
-                sName = duzenek[i].GetComponent<Image>().sprite.name;
+                s = duzenek[i].GetComponent<Image>().sprite;
                 for (int k = 0; k < kuyruk.Length; k++)
                 {
                     if (duzenek[i].GetComponent<Image>().sprite.name == kuyruk[k].GetComponentInChildren<DragAndDropItem>().GetComponent<Image>().sprite.name)
@@ -123,8 +126,20 @@ public class gamePlayManager : MonoBehaviour
         }
         if (count < 1)
         {
-            kuyruk[r.Next(0, 4)].GetComponentInChildren<DragAndDropItem>().GetComponent<Image>().sprite.name = sName;
+            int index = r.Next(0, 4);
+            kuyruk[index].GetComponentInChildren<DragAndDropItem>().GetComponent<Image>().sprite = s;
         }
         yield return new WaitForEndOfFrame();
+    }
+    public IEnumerator successMethod()
+    {
+        GameObject btn = GameObject.Find("NewGameButton");
+        btn.GetComponent<Animator>().enabled = true;
+        AudioSource.PlayClipAtPoint(bee, gameObject.transform.position, 100f);
+        yield return new WaitForEndOfFrame();
+    }
+    public void newGame()
+    {
+        SceneManager.LoadScene(0);
     }
 }
