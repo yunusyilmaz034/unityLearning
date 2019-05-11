@@ -11,7 +11,6 @@ public class gamePlayManager : MonoBehaviour
     public GameObject[] duzenek;
     public GameObject[] kuyruk;
     public Sprite[] spr;
-    public AudioClip bee;
     private int[] generateNum = new int[8];
 
     //private int[] generateNum;
@@ -30,6 +29,7 @@ public class gamePlayManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         Wheel.transform.Rotate(new Vector3(0, 0, 1), Time.deltaTime * 10, Space.World);
     }
     private void createDuzenek()
@@ -135,8 +135,9 @@ public class gamePlayManager : MonoBehaviour
     {
         GameObject btn = GameObject.Find("NewGameButton");
         btn.GetComponent<Animator>().enabled = true;
-        AudioSource.PlayClipAtPoint(bee, gameObject.transform.position, 100f);
-        yield return new WaitForEndOfFrame();
+        gameObject.GetComponent<AudioSource>().Play();
+        gameObject.GetComponent<AudioSource>().loop = false;
+        yield return new WaitForSeconds(5f);
     }
     public void newGame()
     {
