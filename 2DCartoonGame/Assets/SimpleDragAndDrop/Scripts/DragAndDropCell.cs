@@ -105,6 +105,7 @@ public class DragAndDropCell : MonoBehaviour, IDropHandler
     /// <param name="data"></param>
     public void OnDrop(PointerEventData data)
     {
+        DragAndDropCell sourceCell = DragAndDropItem.sourceCell;
         if (DragAndDropItem.icon != null)
         {
             if (DragAndDropItem.icon.activeSelf == true)                    // If icon inactive do not need to drop item in cell
@@ -117,15 +118,15 @@ public class DragAndDropCell : MonoBehaviour, IDropHandler
                     Debug.Log("childCount: " + gameObject.transform.childCount.ToString());
                     if (selectedItem != sourceItem || gameObject.transform.childCount >= 1)
                     {
+                        sourceCell.GetComponent<AudioSource>().clip = item.GetComponent<number>().FalseSound;
+                        sourceCell.GetComponent<AudioSource>().enabled = true;
+                        sourceCell.GetComponent<AudioSource>().Play();
                         return;
                     }
                 } catch (System.Exception e)
                 {
                     Debug.Log("Hata : " + e.Message);
                 }
-          
-                DragAndDropCell sourceCell = DragAndDropItem.sourceCell;
-                
                 DropDescriptor desc = new DropDescriptor();
                 if ((item != null) && (sourceCell != this))
                 {
@@ -182,7 +183,10 @@ public class DragAndDropCell : MonoBehaviour, IDropHandler
                             // Fill event descriptor
                             desc.item = item;
                             desc.sourceCell = sourceCell;
-
+                            sourceCell.GetComponent<AudioSource>().clip = item.GetComponent<number>().TrueSound;
+                            sourceCell.GetComponent<AudioSource>().enabled = true;
+                            sourceCell.GetComponent<AudioSource>().Play();
+                           
                             Debug.Log("sourceCell: " + sourceCell.GetComponent<Image>().sprite.name.ToString());
 
                             //refreshKuyruk(sourceCell, item.gameObject);

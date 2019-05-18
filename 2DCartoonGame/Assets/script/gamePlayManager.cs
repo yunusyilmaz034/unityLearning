@@ -10,7 +10,10 @@ public class gamePlayManager : MonoBehaviour
     public GameObject item;
     public GameObject[] duzenek;
     public GameObject[] kuyruk;
-    public Sprite[] spr;
+    public Sprite[] spr;// data
+    public NumberData[] numbers; //advance data
+    public AudioClip trueSound;
+    public AudioClip falseSound;
     private int[] generateNum = new int[8];
 
     //private int[] generateNum;
@@ -98,11 +101,16 @@ public class gamePlayManager : MonoBehaviour
     }
     private void createKuyruk()
     {
+        int rand = 0;
         for (int i = 0; i < kuyruk.Length; i++)
         {
             foreach (DragAndDropItem item in kuyruk[i].GetComponentsInChildren<DragAndDropItem>())
             {
-                item.GetComponent<Image>().sprite = spr[generateNum[r.Next(0, 8)]];
+                NumberData cardData = NumberData.CreateInstance<NumberData>();
+               item.GetComponent<number>().RegisterData(cardData);
+                rand = r.Next(0, 8);
+               item.GetComponent<number>().FillData(generateNum[rand], spr[generateNum[rand]], trueSound, falseSound);
+               item.GetComponent<Image>().sprite = spr[generateNum[rand]];
             }
         }
     }
