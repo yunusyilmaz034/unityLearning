@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 582bd162264cae441a6b39f5d3e3c342, type: 3}
+  m_Name: 5_Katana
+  m_EditorClassIdentifier: 
+  swordName: 5_Katana
+  description: "Japon K\u0131l\u0131nc\u0131"
+  icon: {fileID: 21300000, guid: 0b7fdefeb592b5e44b462734170bb9af, type: 3}
+  goldCost: 50000
+  attackDamage: 500
