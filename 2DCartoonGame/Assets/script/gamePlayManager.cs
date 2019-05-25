@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 public class gamePlayManager : MonoBehaviour
 {
     public Image Wheel;
-    public GameObject item;
     public GameObject[] duzenek;
     public GameObject[] kuyruk;
     public Sprite[] spr;// data
@@ -15,6 +14,7 @@ public class gamePlayManager : MonoBehaviour
     public AudioClip trueSound;
     public AudioClip falseSound;
     private int[] generateNum = new int[8];
+    public Text scoreText;
 
     //private int[] generateNum;
     private System.Random r = new System.Random();
@@ -154,5 +154,10 @@ public class gamePlayManager : MonoBehaviour
     public void printData(NumberData num)
     {
         Debug.Log("number data" + num.CardName);
+    }
+    public void printToText(int score)
+    {
+        scoreText.text = "Score: " + score.ToString();
+        //yield return new WaitForEndOfFrame();
     }
 }
