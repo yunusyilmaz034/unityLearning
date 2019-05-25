@@ -198,6 +198,7 @@ public class DragAndDropCell : MonoBehaviour, IDropHandler
                             if (dropCount == 8)
                             {
                                 StartCoroutine(GameObject.Find("cark").GetComponent<gamePlayManager>().successMethod());
+                                dropCount = 0;
                             }
                             Debug.Log("Drop Count: " + dropCount.ToString());
                             // Send message with DragAndDrop info to parents GameObjects
