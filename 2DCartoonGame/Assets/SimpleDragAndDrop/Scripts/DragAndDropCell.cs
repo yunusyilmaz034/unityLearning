@@ -339,4 +339,5 @@ public class DragAndDropCell : MonoBehaviour, IDropHandler
             transform.localRotation = Quaternion.identity;
         }
     }
+   
 }
