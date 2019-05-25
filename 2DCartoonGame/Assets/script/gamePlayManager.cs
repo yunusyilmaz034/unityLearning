@@ -151,4 +151,8 @@ public class gamePlayManager : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
+    public void printData(NumberData num)
+    {
+        Debug.Log("number data" + num.CardName);
+    }
 }
