@@ -13,7 +13,7 @@ public class ConditionTriggerScript : MonoBehaviour
 
     private void Update()
     {
-        while (isTrigger)
+        if (isTrigger)
         {
             if (Input.GetAxis("Door Bell") > 0)
             {
