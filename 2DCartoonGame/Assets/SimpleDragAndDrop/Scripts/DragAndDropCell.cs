@@ -3,7 +3,6 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections;
 using System;
-
 /// <summary>
 /// Every item's cell must contain this script
 /// </summary>
@@ -11,6 +10,7 @@ using System;
 public class DragAndDropCell : MonoBehaviour, IDropHandler
 {
     private static int dropCount = 0;
+    private static int score = 0;
     public enum CellType
     {
         Swap,                                                               // Items will be swapped between cells
@@ -121,6 +121,9 @@ public class DragAndDropCell : MonoBehaviour, IDropHandler
                         sourceCell.GetComponent<AudioSource>().clip = item.GetComponent<number>().FalseSound;
                         sourceCell.GetComponent<AudioSource>().enabled = true;
                         sourceCell.GetComponent<AudioSource>().Play();
+                        score -= 10;
+                        GameObject.Find("cark").GetComponent<gamePlayManager>().printToText(score);
+                       //( StartCoroutine();
                         return;
                     }
                 } catch (System.Exception e)
@@ -179,6 +182,7 @@ public class DragAndDropCell : MonoBehaviour, IDropHandler
                             }
                             break;
                         case CellType.DropOnly:
+                    
                             PlaceItem(item.gameObject);                     // Place dropped item in this cell
                             // Fill event descriptor
                             desc.item = item;
@@ -195,9 +199,13 @@ public class DragAndDropCell : MonoBehaviour, IDropHandler
                             //StartCoroutine(GameObject.Find("GameManager").GetComponent<gamePlayManager>().endOfWheel());
                             desc.destinationCell = this;
                             dropCount++;
+                            score += 10;
+                            GameObject.Find("cark").GetComponent<gamePlayManager>().printToText(score);
+                           // StartCoroutine(GameObject.Find("cark").GetComponent<gamePlayManager>().printToText(score));
                             if (dropCount == 8)
                             {
                                 StartCoroutine(GameObject.Find("cark").GetComponent<gamePlayManager>().successMethod());
+                                dropCount = 0;
                             }
                             Debug.Log("Drop Count: " + dropCount.ToString());
                             // Send message with DragAndDrop info to parents GameObjects
