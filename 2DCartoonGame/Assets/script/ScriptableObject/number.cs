@@ -7,6 +7,9 @@ public class number : MonoBehaviour, IBeginDragHandler
 {
     [SerializeField]
     private NumberData numData;
+    [SerializeField]
+    private gameEvent Event;
+
 
     public AudioClip TrueSound
     {
@@ -29,7 +32,16 @@ public class number : MonoBehaviour, IBeginDragHandler
         Debug.Log(numData.Icon.name);
         Debug.Log(numData.TrueSound.name);
         Debug.Log(numData.FalseSound.name);
-        //throw new System.NotImplementedException();
+        Event.Raise();
+    }
+    public void getData(NumberData n)
+    {
+        Debug.Log(n.Id);
+        Debug.Log(n.CardName);
+        Debug.Log(n.Icon.name);
+        Debug.Log(n.TrueSound.name);
+        Debug.Log(n.FalseSound.name);
+        Event.Raise();
     }
     public void FillData(int number, Sprite sp, AudioClip trueSound, AudioClip falseSound)
     {
