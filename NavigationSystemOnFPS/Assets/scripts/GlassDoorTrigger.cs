@@ -13,11 +13,17 @@ public class GlassDoorTrigger : MonoBehaviour
     private bool autoClosed = true;
 
     private bool isTriggerPanel = false;
+    private Text m_infoText;
+
 
     private void Start()
     {
         infoPanel = GameObject.Find("Panel");
-        infoPanel.GetComponent<Image>().enabled = true;
+        if (infoPanel.GetComponentInChildren<Text>() != null)
+        {
+            m_infoText = infoPanel.GetComponentInChildren<Text>();
+        }
+        
     }
 
     private void Update()
@@ -42,14 +48,18 @@ public class GlassDoorTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        infoPanel.GetComponent<Image>().enabled = true;
+        m_infoText.GetComponent<Text>().enabled = true;
         isTriggerPanel = true;
         infoPanel.SetActive(true);
     }
     private void OnTriggerExit(Collider other)
     {
+        infoPanel.GetComponent<Image>().enabled = false;
+        m_infoText.GetComponent<Text>().enabled = false;
         isTriggerPanel = false;
         infoPanel.SetActive(false);
-        if (autoClosed)
+        if (autoClosed && door.GetComponent<Animator>().GetBool("character_nearby"))
         {
             door.GetComponent<doorTrigger>().shutDownSusame();
         }
