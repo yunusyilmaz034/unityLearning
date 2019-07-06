@@ -13,6 +13,11 @@ public class GlassDoorTrigger : MonoBehaviour
 
     private bool isTriggerPanel = false;
 
+    private void Start()
+    {
+        infoPanel = GameObject.Find("Panel");
+    }
+
     private void Update()
     {
         if (isTriggerPanel)
