@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GlassDoorTrigger : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class GlassDoorTrigger : MonoBehaviour
     private void Start()
     {
         infoPanel = GameObject.Find("Panel");
+        infoPanel.GetComponent<Image>().enabled = true;
     }
 
     private void Update()
