@@ -26,6 +26,7 @@ public class loıginScript : MonoBehaviour
             PlayFabSettings.TitleId = "144";
         }
         var req = new LoginWithCustomIDRequest { CustomId = "Sample Id1", CreateAccount = true };
+        
         PlayFabClientAPI.LoginWithCustomID(req, onSuccess, onFailure);
     }
     private void onSuccess (LoginResult result)
