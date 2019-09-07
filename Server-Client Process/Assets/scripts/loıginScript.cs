@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 using UnityEngine;
 using PlayFab;
 using PlayFab.ClientModels;
@@ -12,10 +13,12 @@ public class loıginScript : MonoBehaviour
     public Text response;
     private string URL = "http://api.openweathermap.org/data/2.5/weather?q=Istanbul,tr&appid=";
     private string APIKEY = "7e58b5f94bdf4a304e5c8c1605b07398";
+    private WeatherModel w;
 
     // Start is called before the first frame update
     void Start()
     {
+        w = new WeatherModel();
         URL = URL + APIKEY;
         StartCoroutine("callWeatherApi");
     }
@@ -55,7 +58,9 @@ public class loıginScript : MonoBehaviour
             {
                 Debug.Log(": Error: " + request.error);
             }
-            response.text = request.downloadHandler.text;
+            string strResponse = request.downloadHandler.text;
+            w = JsonConvert.DeserializeObject<WeatherModel>(strResponse);
+            Debug.Log(w);
         }
         
     }
