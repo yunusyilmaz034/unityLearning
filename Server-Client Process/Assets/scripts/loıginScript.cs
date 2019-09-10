@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Newtonsoft.Json;
 using UnityEngine;
 using PlayFab;
 using PlayFab.ClientModels;
@@ -40,7 +39,7 @@ public class loıginScript : MonoBehaviour
     }
     private void onSuccess (LoginResult result)
     {
-        message.text = "Giriş İzni Verildi. Go Go Go ..."; ;
+        message.text = "Giriş İzni Verildi. Go Go Go ...";
     }
     private void onFailure(PlayFabError error)
     {
@@ -59,7 +58,13 @@ public class loıginScript : MonoBehaviour
                 Debug.Log(": Error: " + request.error);
             }
             string strResponse = request.downloadHandler.text;
-            w = JsonConvert.DeserializeObject<WeatherModel>(strResponse);
+            Dictionary<string, string> dict = new Dictionary<string, string>();
+            string[] items = strResponse.TrimEnd(',').Split(',');
+            foreach (string item in items)
+            {
+                string[] keyValue = item.Split('=');
+                dict.Add(keyValue[0], keyValue[1]);
+            }
             Debug.Log(w);
         }
         
