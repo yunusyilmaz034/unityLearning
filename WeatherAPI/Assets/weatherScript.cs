@@ -72,7 +72,7 @@ public class weatherScript : MonoBehaviour
                     string str = obj.n.ToString();
                     str = str.Insert(2, ".");
                     temp.text = str + "°C";
-                }
+                } 
                 break;
             case JSONObject.Type.BOOL:
                 Debug.Log(obj.b);
