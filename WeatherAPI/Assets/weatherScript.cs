@@ -18,6 +18,7 @@ public class weatherScript : MonoBehaviour
     */
     private string URL = "http://api.openweathermap.org/data/2.5/weather?q=Istanbul,tr&units=metric&appid=";
     private string APIKEY = "7e58b5f94bdf4a304e5c8c1605b07398";
+    private string localURL = "http://localhost/api.php";
     private WeatherModel w;
     private WWW www = null;
     private string key;
@@ -28,15 +29,22 @@ public class weatherScript : MonoBehaviour
     {
         w = new WeatherModel();
         URL = URL + APIKEY;
+        int number1 = 10;
+        int number2 = 134;
+        int mathOperator = 0;
+        localURL += "?" + "number1=" + number1.ToString() + "&"+ "operator="+ mathOperator.ToString() + "&" +"number2="+ number2.ToString();
+        Debug.Log("url: " + localURL);
         StartCoroutine("callWeatherApi");
+
     }
     IEnumerator callWeatherApi()
     {
-        www = new WWW(URL);
+        www = new WWW(localURL);
         yield return www;
         JSONObject json = new JSONObject(www.text);
-        accessData(json);
-        fillField();
+        Debug.Log(json);
+        //accessData(json);
+        //fillField();
     }
     void accessData(JSONObject obj)
     {
@@ -72,7 +80,7 @@ public class weatherScript : MonoBehaviour
                     string str = obj.n.ToString();
                     str = str.Insert(2, ".");
                     temp.text = str + "°C";
-                }
+                } 
                 break;
             case JSONObject.Type.BOOL:
                 Debug.Log(obj.b);
